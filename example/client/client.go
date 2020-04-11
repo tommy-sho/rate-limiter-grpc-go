@@ -20,7 +20,7 @@ const (
 )
 
 func main() {
-	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock(),
+	conn, err := grpc.Dial(address, grpc.WithInsecure(),
 		grpc.WithUnaryInterceptor(ratelimit.UnaryClientInterceptor(ratelimit.NewLimiter(2))))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
